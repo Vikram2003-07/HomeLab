@@ -1,0 +1,43 @@
+### HomeLab Project
+
+1. Installed kali,windows10,windows-server-2022(ADDC01),Ubuntu-server-22.0(Splunk)
+
+2. Setting up Sysmon and Splunk
+
+2.1 Setting up NAT Network in VirtualBox
+    - go to network section in virtualbox
+    - go to network tab and press create button
+    - under 'General Options' tab set Name: AD-Project, ipv4-prefix: 192.168.10.0/24 and check the box Enable DHCP
+    - click apply
+    - now go to machines tab, for all our machines - kali,win10,ADDC01,Splunk, set network type as NAT Network make sure that name is AD-Project
+
+2.2 Run Splunk Machine(Ubuntu-server)
+    - check the ipv4 address, make sure it's in 192.168.10.x/24
+    - now we need to set manual dhcp, so open netplan, i.e, run :sudo nano /etc/netplan/50-cloud-init.yaml
+    - edit the file to - 
+      network:
+        version: 2
+        ethernets:
+            enp0s3:
+            dhcp4: no
+            addresses:
+                - 192.168.10.10/24
+            nameservers:
+                addresses:
+                - 8.8.8.8
+            routes:
+                - to: default
+                via: 192.168.10.101
+    
+    - make sure the indentaion Levels
+        - Level 1 (network:): 0 spaces
+        - Level 2 (version:, ethernets:): 2 spaces
+        - Level 3 (enp0s3:): 4 spaces
+        - Level 4 (dhcp4:, addresses:, nameservers:, routes:): 6 spaces (All four of these must line up perfectly vertically!)
+        - Level 5 (- 192.168..., addresses: under nameservers, - to:): 8 spaces
+        - Level 6 (- 8.8.8.8, via:): 10 spaces
+    - run :sudo netplan try, ignore the warnings, if prompted to press enter key, press enter key
+    - if not prompted anything run :sudo netplan apply, ignore the warnings
+    - now check the the ip address rub:ip a, it should show you ipv4 as 192.168.10.10, otherwise you need to configure netplan yaml file prperly from 2.2
+    - if everything is correct run :ping google.com, it shoud ping.
+    - 
