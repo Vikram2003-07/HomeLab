@@ -39,5 +39,4 @@
     - run :sudo netplan try, ignore the warnings, if prompted to press enter key, press enter key
     - if not prompted anything run :sudo netplan apply, ignore the warnings
     - now check the the ip address rub:ip a, it should show you ipv4 as 192.168.10.10, otherwise you need to configure netplan yaml file prperly from 2.2
-    - if everything is correct run :ping google.com, it shoud ping.
-    - 
+    - if everything is correct run :ping google.com, it shoud ping properly.
