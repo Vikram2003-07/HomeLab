@@ -3,6 +3,7 @@
 A hands-on cybersecurity home lab simulating a real-world enterprise environment with Active Directory, Splunk SIEM, Sysmon telemetry, and a Kali Linux attacker machine — all running on VirtualBox.
 
 ---
+![image](https://github.com/Vikram2003-07/HomeLab/blob/accbe287108d72f18bc5a9cfea12a6bf4af7a613/Screenshot%202026-06-29%20221453.png)
 
 ## 📋 Table of Contents
 
