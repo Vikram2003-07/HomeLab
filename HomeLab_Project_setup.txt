@@ -1,6 +1,6 @@
 ### HomeLab Project
 
-1. Installed kali,windows10,windows-server-2022(ADDC01),Ubuntu-server-22.0(Splunk)
+1. Installed kali,windows10-pro,windows-server-2022(ADDC01),Ubuntu-server-22.0(Splunk)
 
 2. Setting up Sysmon and Splunk
 
@@ -96,4 +96,18 @@
     - click the flag icon present before Manage, then click Promote this server to Domain Controler, then select Add a new forest then give a domain name - mydfir.local, click next, set a password, click next, next, next, then click install, then the server automatically server restarts.
 
 4.2 start creating some users
-    - inside Services manager click tools, then click Active directory users and computers,
+    - inside Services manager click tools, then click Active directory users and computers, expand teh domain.
+    - right click on domain > New > Organisational unit > Give the name as 'IT'.
+    - now right click on IT > New > User > set password for the user.
+    - right click on domain > New > Organisational unit > Give the name as 'HR'.
+    - now right click on IT > New > User > set password for the user.
+
+4.3 Joining Target machine to our Domain(mydfir.local)
+    - using JennySmith we are going to login our target machine.
+    - First we need to make our target machine point to our Domain.
+    - goto settings > open Network and Internet settings > change adapter > Right click on Ethernet > Proprties > Double click IPV4 addresses > change the dns address to 192.168.10.7(Windows server).
+    - now Search This Pc > click Properties > select Advanced System Settings > under computer name tab select change > click domain > type 
+    MYDFIR.LOCAL > ok > Restart
+    - now in lock screen we can see other user login which shows our domain(mydfir)
+
+Congratulations🎉, you have successfully created the HomeLab.
